@@ -59,7 +59,7 @@ const getWeatherDetails = async (cityName, lat, lon) => {
 
 const getCityCoord = async () => {
     const cityName = cityInput.value.trim();
-    const coordUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
+    const coordUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
     if (!cityName) {
         return;
     }
@@ -81,7 +81,7 @@ const getCityCoord = async () => {
 const getLocationCoord = ()=>{
     navigator.geolocation.getCurrentPosition(async (position)=>{
         const { latitude, longitude} = position.coords;
-        const reverseCoord = `http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
+        const reverseCoord = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
 
         const response = await fetch(reverseCoord);
         const data = await response.json();
