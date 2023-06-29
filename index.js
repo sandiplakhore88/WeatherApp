@@ -33,7 +33,7 @@ const createWeatherCard = (cityName, wtrItem, index) => {
 }
 
 const getWeatherDetails = async (cityName, lat, lon) => {
-    const weatherUlr = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    const weatherUlr = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     const response = await fetch(weatherUlr);
     const data = await response.json();
 
