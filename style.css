@@ -225,4 +225,31 @@ h1{
     
   }
 
+/* skeleton styling */
 
+.skeleton{
+    position: relative;
+}
+
+.skeleton::before{
+    content: "";
+    position:absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    z-index:10;
+    background: linear-gradient(90deg, #eee, rgb(110, 203, 138), #eee);
+    background-size: 200%;
+    animation: skeleton 1s infinite reverse;
+}
+
+@keyframes skeleton{
+    0%{
+        background-position: -100% 0;
+    }
+    100%{
+        background-position: 100% 0;
+    }
+}
