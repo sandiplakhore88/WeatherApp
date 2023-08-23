@@ -13,7 +13,7 @@
 <body>
     <h1>Weather Dashboard</h1>
     <div class="container">
-        <div class="weather-input">
+        <div class="weather-input skeleton">
             <h3>Enter a city name</h3>
             <input class="city-input" type="text" placeholder="E.g., Nashik, Mumbai, Pune">
             <button class="search-btn">Search</button>
@@ -21,54 +21,64 @@
             <button class="location-btn">Use Current Location</button>
         </div>
         <div class="weather-data">
-            <div class="current-weather">
+            <div class="current-weather skeleton">
                 <div class="details">
-                    <h2>____ ( _____ )</h2>
-                    <h4>Temperature: __°C</h4>
-                    <h4>Wind: __m/s</h4>
-                    <h4>Humidity: __%</h4>
+                    <h2 class="skeleton-before">____ ( _____ )</h2>
+                    <h4 class="skeleton-before">Temperature: __°C</h4>
+                    <h4 class="skeleton-before">Wind: __m/s</h4>
+                    <h4 class="skeleton-before">Humidity: __%</h4>
                 </div>
             </div>
             <div class="days-forecast">
                 <h2>5-Days Forecast</h2>
                 <ul class="weather-cards">
-                    <li class="card">
-                        <h3>( _____ )</h3>
-                        <h4>Temp: __°C</h4>
-                        <h4>Wind: __m/s</h4>
-                        <h4>Humidity: __%</h4>
+                    <li class="card skeleton">
+                        <h3 class="skeleton-before">( _____ )</h3>
+                        <h4 class="skeleton-before">Temp: __°C</h4>
+                        <h4 class="skeleton-before">Wind: __m/s</h4>
+                        <h4 class="skeleton-before">Humidity: __%</h4>
                     </li>
-                    <li class="card">
-                        <h3>( _____ )</h3>
-                        <h4>Temp: __°C</h4>
-                        <h4>Wind: __m/s</h4>
-                        <h4>Humidity: __%</h4>
+                    <li class="card skeleton">
+                        <h3 class="skeleton-before">( _____ )</h3>
+                        <h4 class="skeleton-before">Temp: __°C</h4>
+                        <h4 class="skeleton-before">Wind: __m/s</h4>
+                        <h4 class="skeleton-before">Humidity: __%</h4>
                     </li>
-                    <li class="card">
-                        <h3>( _____ )</h3>
-                        <h4>Temp: __°C</h4>
-                        <h4>Wind: __m/s</h4>
-                        <h4>Humidity: __%</h4>
+                    <li class="card skeleton">
+                        <h3 class="skeleton-before">( _____ )</h3>
+                        <h4 class="skeleton-before">Temp: __°C</h4>
+                        <h4 class="skeleton-before">Wind: __m/s</h4>
+                        <h4 class="skeleton-before">Humidity: __%</h4>
                     </li>
-                    <li class="card">
-                        <h3>( _____ )</h3>
-                        <h4>Temp: __°C</h4>
-                        <h4>Wind: __m/s</h4>
-                        <h4>Humidity: __%</h4>
+                    <li class="card skeleton">
+                        <h3 class="skeleton-before">( _____ )</h3>
+                        <h4 class="skeleton-before">Temp: __°C</h4>
+                        <h4 class="skeleton-before">Wind: __m/s</h4>
+                        <h4 class="skeleton-before">Humidity: __%</h4>
                     </li>
-                    <li class="card">
-                        <h3>( _____ )</h3>
-                        <h4>Temp: __°C</h4>
-                        <h4>Wind: __m/s</h4>
-                        <h4>Humidity: __%</h4>
+                    <li class="card skeleton">
+                        <h3 class="skeleton-before">( _____ )</h3>
+                        <h4 class="skeleton-before">Temp: __°C</h4>
+                        <h4 class="skeleton-before">Wind: __m/s</h4>
+                        <h4 class="skeleton-before">Humidity: __%</h4>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="footer">
-        <span>Created By: <a href="https://sandiplakhore88.github.io/MyPortfolio/">SandipLakhore</a> | © 2023 All right researve.</span>
+        <span>Created By: <a href="https://sandiplakhore88.github.io/MyPortfolio/">SandipLakhore</a> | © 2023 All right
+            researve.</span>
     </div>
+    <script>
+        const skeletonLoad = document.querySelectorAll(".skeleton");
+
+        window.addEventListener("load", () => {
+            skeletonLoad.forEach((item) => {
+                item.classList.remove("skeleton");
+            });
+        });
+    </script>
 </body>
 
 </html>
