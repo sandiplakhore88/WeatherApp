@@ -3,10 +3,13 @@ const searchBtn = document.querySelector('.search-btn');
 const locationBtn = document.querySelector('.location-btn');
 const weatherCardDiv = document.querySelector('.weather-cards');
 const currentWeatherDiv = document.querySelector('.current-weather');
+const skeleton = document.querySelectorAll(".skeleton-before");
 
 
 const apiKey = 'b1f50a44db537058198a7237b8f77baa';
 
+
+//<====== create card ======>
 const createWeatherCard = (cityName, wtrItem, index) => {
     if (index === 0) {
         return (`
@@ -32,10 +35,16 @@ const createWeatherCard = (cityName, wtrItem, index) => {
 
 }
 
+//<====== fetching weather detail ======>
 const getWeatherDetails = async (cityName, lat, lon) => {
     const weatherUlr = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    skeleton.forEach((item) => { return item.classList.add("skeleton"); });
+
     const response = await fetch(weatherUlr);
     const data = await response.json();
+
+    skeleton.forEach((item) => { return item.classList.remove("skeleton"); });
 
     const uniqFCDays = [];
     const fiveDayFC = data.list.filter((foreCast) => {
@@ -45,9 +54,11 @@ const getWeatherDetails = async (cityName, lat, lon) => {
         }
     });
 
+    //<==== remove previous card or do empty DOM ====>
     weatherCardDiv.innerHTML = '';
     currentWeatherDiv.innerHTML = '';
-
+    
+    //<==== set card inside DOM ====>
     fiveDayFC.forEach((wtrItem, index) => {
         if (index === 0) {
             currentWeatherDiv.insertAdjacentHTML('beforeend', createWeatherCard(cityName, wtrItem, index));
@@ -57,6 +68,7 @@ const getWeatherDetails = async (cityName, lat, lon) => {
     })
 }
 
+//<====== fetch city coordinate by clicking on search button ======>
 const getCityCoord = async () => {
     const cityName = cityInput.value.trim();
     const coordUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
@@ -77,7 +89,7 @@ const getCityCoord = async () => {
 
 }
 
-
+//<====== fetch current position by clicking on location button ======>
 const getLocationCoord = ()=>{
     navigator.geolocation.getCurrentPosition(async (position)=>{
         const { latitude, longitude} = position.coords;
@@ -96,8 +108,13 @@ const getLocationCoord = ()=>{
 }
 
 
+//<====== addEventListener on searchButton ======>
 searchBtn.addEventListener('click', getCityCoord);
+
+//<====== addEventListener on locationButton ======>
 locationBtn.addEventListener('click', getLocationCoord);
+
+//<====== addEventListener on Enter key ======>
 cityInput.addEventListener('keyup',(e)=>{
     e.key === 'Enter' && getCityCoord();
 });
